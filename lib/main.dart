@@ -6,7 +6,16 @@ import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workmanager/workmanager.dart';
 
-void main() => runApp(MyApp());
+// flutter build apk --release
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Workmanager().initialize(
+    callbackDispatcher,
+    isInDebugMode: true,
+  );
+  runApp(MyApp());
+}
 
 const simpleTaskKey = "simpleTask";
 const simpleDelayedTask = "simpleDelayedTask";
